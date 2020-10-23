@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Item Shelf - My Inventory Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Item Shelf";
+    var mkdocs_page_input_path = "item-shelf.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> My Inventory Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory/">Inventory</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-skin/">Inventory Skin</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-image/">Inventory Image</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Inventory Input</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Item Shelf</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-properties">Static Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#public-methods">Public Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-methods">Static Methods</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">My Inventory Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Item Shelf</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/example/repository/edit/master/docs/item-shelf.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="the-item-shelf">The Item Shelf</h1>
+<h2 id="description">Description</h2>
+<p>The ItemShelf is a scriptableObject that holds data about all the items you set up,
+and the Inventory system unity package comes with a preconfigured ItemShelf containing a few items to help you get started.  </p>
+<p>The ItemShelf has to be located in a <strong>/Resources/</strong> folder.<br />
+There can only be one ItemShelf per project.</p>
+<h2 id="static-properties">Static Properties</h2>
+<pre><code>    public static int ItemCount;
+        // Returns the current Item count in the ItemShelf.
+
+    public static Item Random;
+        // Returns a random item from the ItemShelf.
+</code></pre>
+<h2 id="properties">Properties</h2>
+<pre><code>public List&lt;Entry&gt; entries
+    // A list of all the Item entries in the ItemShelf.
+    // use ItemShelf.GetInstance().entries;
+
+public string ResourcePath { private get; set; }
+    // The resource path of the scriptableObject.
+    // use ItemShelf.GetInstance().ResourcePath;
+</code></pre>
+<h2 id="public-methods">Public Methods</h2>
+<pre><code>public void UpdateResourcePath(ItemShelf shelf)
+    // Updates and saves the current Resource path of the ItemShelf scriptableObject.  
+    // his is called automatically when the scriptableObject path has changed.
+</code></pre>
+<h2 id="static-methods">Static Methods</h2>
+<pre><code>    public static ItemShelf GetInstance
+        // Returns the static instance of the ItemShelf.
+        // Loads the instance if it isn't loaded.
+
+    public static Item GetItem(int index)
+        // Returns Item at entries[index].
+
+    public static Item GetItem(string name)
+        // Returns Item with name 'name'.
+
+    public static Item GetItem&lt;T&gt;(int index) where T : Item
+        // Returns Item at entries[index] as type T.
+
+    Public static bool HasItem(int index)
+        // Returns true if itemShelf contains item at index.
+
+    Public static bool HasItem(string name)
+        // Returns true if itemShelf contains item with name.
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../inventory-input/" class="btn btn-neutral" title="Inventory Input"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>copyright</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/example/repository/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../inventory-input/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
