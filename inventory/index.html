@@ -28,6 +28,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'G-K8RWXJ20R6', 'https://sandpile.github.io/My-Inventory-Documentation/');
+      ga('send', 'pageview');
+  </script>
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -57,6 +67,56 @@
     <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-methods">Static Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inventoryrenderer">Inventory.Renderer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_1">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties">Static Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_1">Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inventorymeshdata">Inventory.MeshData</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_2">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties_1">Static Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_2">Properties</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inventoryslotdata">Inventory.SlotData</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_3">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties_2">Static Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_3">Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slot">Slot</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_4">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#properties_4">Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_4">Methods</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -101,9 +161,6 @@
     <li>Inventory</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/example/repository/edit/master/docs/inventory.md"
-          class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   
@@ -118,6 +175,145 @@
 with help from an <a href="../inventory-skin/">InventorySkin</a> and an <a href="../inventory-image/">InventoryImage</a>.
 The behaviour of an Inventory can be altered using an <a href="../inventory-input/">InventoryInput</a> object.</p>
 <h3 id="properties">Properties</h3>
+<pre><code class="language-csharp">    // The unique ID of the inventory.
+    public int ID
+</code></pre>
+<pre><code class="language-csharp">    // The filename of the save file of the inventory slot array.
+    public string FileName
+</code></pre>
+<pre><code class="language-csharp">    // The current InventorySkin used by the Inventory.
+    public InventorySkin skin
+</code></pre>
+<pre><code class="language-csharp">    // The Slot data of the Inventory.
+    public SlotData slotData
+</code></pre>
+<pre><code class="language-csharp">    // A shortcut for slotData.slots[]
+    public Slot[] Slots
+</code></pre>
+<pre><code class="language-csharp">    // Is the inventory being drawn using the inventory.Draw() method?
+    public bool IsDrawing { get; }
+</code></pre>
+<h3 id="static-methods">Static Methods</h3>
+<pre><code class="language-csharp">    // Loads an inventory from file, or creates a new inventory if no file was found.
+    // Inventory i = Inventory.Load(...);
+    public static Inventory Load(string fileName, InventorySkin skin, bool forceNew = false)
+</code></pre>
+<pre><code class="language-csharp">    // Mark the Inventory system to update the texture size next update.
+    // Usefull after changing aspect ratio.
+    public static void MarkForNewRenderTexture()
+</code></pre>
+<pre><code class="language-csharp">    // Set an InputObject to allow custom behavior written by the user.
+    // See InventoryInput for more information.
+    public static void SetInputObject()
+</code></pre>
+<pre><code class="language-csharp">    // Get the InventoryInput object currently in use. (Null if none)
+    // See InventoryInput for more information.
+    public static InventoryInput GetInputObject()
+</code></pre>
+<h3 id="methods">Methods</h3>
+<pre><code class="language-csharp">    // Reload slotData.slots[] array from last save as FileName.
+    public void Reload()
+</code></pre>
+<pre><code class="language-csharp">    // Save the current slotData.slots[] array as FileName.
+    public void Save() 
+
+    // Save the current slotData.slots[] array as specified fileName.
+    public void Save(string fileName)
+</code></pre>
+<pre><code class="language-csharp">    // Update the Inventory, and draw it on image 
+    // according to the inventorySkin.framesPerSecond property.
+    public void Draw(InventoryImage image)
+</code></pre>
+<pre><code class="language-csharp">    // Get Item Index at position (x, y).
+    // Returns -1 if Slot(x, y) doesn't contain an item.
+    public int GetItemIndexAt(int x, int y)
+</code></pre>
+<pre><code class="language-csharp">    // Get Item at position (x, y).
+    // Returns null if position (x, y) does not contain an item. 
+    public Item GetItemAt(int x, int y)
+
+
+    // Get Item at position.
+    // Returns null if position does not contain an item. 
+    public Item GetItemAt(Vector2 position)
+</code></pre>
+<pre><code class="language-csharp">    // Returns true if slot (x, y) contains an item.
+    public bool HasItem(int x, int y)
+
+    // Returns true if slot at position contains an item.
+    public bool HasItem(Vector2 position)
+
+    // Returns true if slot at (x, y) contains an item.
+    // itemIndex carries the index of item at (x, y). -1 is no item.
+    public bool HasItem(int x, int y, out int itemIndex)
+
+    // Returns true if slot at position contains an item.
+    // itemIndex carries the index of item at position. -1 is no item.
+    public bool HasItem(Vector2 position, out int itemIndex)
+
+    // Returns true if slot at (x, y) contains an item.
+    // item carries the item at (x, y). null if empty.
+    public bool HasItem(int x, int y, out Item item)
+
+    // Returns true if slot at  position contains an item.
+    // item carries the item at position. null if empty.
+    public bool HasItem(Vector2 position, out Item item)
+</code></pre>
+<pre><code class="language-csharp">    // Place held item in the inventory at (x, y). 
+    // Swaps items if slot already has item.
+    public void PlaceHeldItem(int x, int y)
+
+    // Place held item in the inventory at position. 
+    // Swaps items if slot already has item.
+    public void PlaceHeldItem(Vector2 position)
+</code></pre>
+<pre><code class="language-csharp">    // Stashes any held item in the first eligible slot.
+    // Returns false if there is no place in the inventory for the Item.
+    // Calls inputObject's OnTossHand(ref Slot hand) method before emptying hand if operation failed.
+    public bool StashHeldItem()
+
+</code></pre>
+<pre><code class="language-csharp">    // Pick up a certain number of items from slot.
+    // Places/ Swaps item if hand already has item.
+    // If pickUpOneIfSame, picks up one item at (x, y) if hand item is the same as slot item.
+    public void PickUpStack(int x, int y, int count, bool pickUpOneIfSame = false)
+</code></pre>
+<pre><code class="language-csharp">    // Places count items from hand into slot (x, y).
+    // Swaps items if hand item is different from slot item.
+    public void PlaceHeldStack(int x, int y, int count)
+</code></pre>
+<pre><code class="language-csharp">    // Inserts item into slot (x, y) with a stack of count.
+    // Unsafe! (Overrides any item already at x, y)
+    public void InsertItem(Item item, int x, int y, int count = 1)
+</code></pre>
+<pre><code class="language-csharp">    // Places count items in the first available slot.
+    // Adds to stack if possible. 
+    // Calls inputObject's OnTossItem(ref Item item) method before emptying hand if operation failed.
+    public bool PlaceItem(Item item, int count = 1)
+
+    // Place item as specified slot.
+    // Calls inputObject's OnTossItem() method before emptying hand if operation failed.
+    public bool PlaceItem(Item item, int x, int y, int count = 1)
+</code></pre>
+<h2 id="inventoryrenderer">Inventory.Renderer</h2>
+<h3 id="description_1">Description</h3>
+<h3 id="static-properties">Static Properties</h3>
+<h3 id="properties_1">Properties</h3>
+<h3 id="methods_1">Methods</h3>
+<h2 id="inventorymeshdata">Inventory.MeshData</h2>
+<h3 id="description_2">Description</h3>
+<h3 id="static-properties_1">Static Properties</h3>
+<h3 id="properties_2">Properties</h3>
+<h2 id="methods_2">Methods</h2>
+<h2 id="inventoryslotdata">Inventory.SlotData</h2>
+<h3 id="description_3">Description</h3>
+<h3 id="static-properties_2">Static Properties</h3>
+<h3 id="properties_3">Properties</h3>
+<h3 id="methods_3">Methods</h3>
+<h2 id="slot">Slot</h2>
+<h3 id="description_4">Description</h3>
+<h3 id="properties_4">Properties</h3>
+<h3 id="methods_4">Methods</h3>
               
             </div>
           </div>
@@ -138,8 +334,6 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p>copyright</p>
-    
   </div>
 
   Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -154,8 +348,6 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
 
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/example/repository/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
