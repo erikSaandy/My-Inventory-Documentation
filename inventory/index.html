@@ -66,17 +66,19 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-properties">Static Properties</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#static-methods">Static Methods</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#inventoryrenderer">Inventory.Renderer</a>
+    <li class="toctree-l2"><a class="reference internal" href="#inventorytexturerenderer">Inventory.TextureRenderer</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#description_1">Description</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#static-properties">Static Properties</a>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties_1">Static Properties</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#properties_1">Properties</a>
     </li>
@@ -88,21 +90,25 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#description_2">Description</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#static-properties_1">Static Properties</a>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties_2">Static Properties</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#properties_2">Properties</a>
     </li>
-        </ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructors">Constructors</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#methods_2">Methods</a>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#inventoryslotdata">Inventory.SlotData</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#description_3">Description</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#static-properties_2">Static Properties</a>
+    <li class="toctree-l3"><a class="reference internal" href="#static-properties_3">Static Properties</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#properties_3">Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#constructors_1">Constructors</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#methods_3">Methods</a>
     </li>
@@ -113,6 +119,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#description_4">Description</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#properties_4">Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#constructors_2">Constructors</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#methods_4">Methods</a>
     </li>
@@ -174,6 +182,15 @@
 <p>An Inventory is an object that takes care of drawing an inventory on the screen
 with help from an <a href="../inventory-skin/">InventorySkin</a> and an <a href="../inventory-image/">InventoryImage</a>.
 The behaviour of an Inventory can be altered using an <a href="../inventory-input/">InventoryInput</a> object.</p>
+<h3 id="static-properties">Static Properties</h3>
+<pre><code class="language-csharp">    // the ID of the inventory the cursor is hovering over.
+    // -1 if no inventory is hovered over.
+    public static int hoverInventory { get; }
+</code></pre>
+<pre><code class="language-csharp">    // the index of the slot the cursor is hovering over.
+    // -1 if no slot is hovered over.
+    public static int hoverSlot { get; }
+</code></pre>
 <h3 id="properties">Properties</h3>
 <pre><code class="language-csharp">    // The unique ID of the inventory.
     public int ID
@@ -295,25 +312,169 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
     // Calls inputObject's OnTossItem() method before emptying hand if operation failed.
     public bool PlaceItem(Item item, int x, int y, int count = 1)
 </code></pre>
-<h2 id="inventoryrenderer">Inventory.Renderer</h2>
+<h2 id="inventorytexturerenderer">Inventory.TextureRenderer</h2>
 <h3 id="description_1">Description</h3>
-<h3 id="static-properties">Static Properties</h3>
+<p>The TextureRenderer takes care of rendering the Inventory to the screen.</p>
+<h3 id="static-properties_1">Static Properties</h3>
+<pre><code class="language-csharp">    // The RenderTexture with a rendering of the inventories being drawn.
+    public static RenderTexture Texture { get; }
+
+    //The UI object displaying the render texture on the canvas.
+    public static RawImage UIObject { get;}
+</code></pre>
+<pre><code class="language-csharp">    // Pixels per unit.
+    // Based on latest initiated inventory background sprite pixelsPerUnit.
+    public static float PPU
+
+    // Units per pixel.
+    // 1 / PPU
+    public static float UPP
+</code></pre>
 <h3 id="properties_1">Properties</h3>
+<pre><code class="language-csharp">    public MeshData MeshData { get; }
+</code></pre>
+<pre><code class="language-csharp">    // Is this inventory the first inventory being rendered this frame?
+    // Holds data of last rendered frame if no inventory has been rendered this frame.
+    public bool IsFirstRenderer { get; }
+</code></pre>
+<pre><code class="language-csharp">    // The RectTransform of the InventoryImage being rendered to.
+    public RectTransform RectTransform { get; }
+</code></pre>
+<pre><code class="language-csharp">    // The RectTransform of the Canvas parenting the image being rendered to.
+    public RectTransform CanvasRectTransform { get; }
+</code></pre>
+<pre><code class="language-csharp">    // Bounds of the inventory in world space.
+    public Bounds Bounds { get; }
+</code></pre>
 <h3 id="methods_1">Methods</h3>
+<pre><code class="language-csharp">    //
+    public void Update(Inventory inventory, InventoryImage image) [TODO]
+</code></pre>
+<pre><code class="language-csharp">    // Get position of the cursor relative to the render mesh.
+    // (0, 0) is center of the inventory.
+    public Vector2 GetHandPosition(Inventory inv, bool pixelSnap = false)
+</code></pre>
+<pre><code class="language-csharp">    // Get position of the inventory in world space. 
+    // (0, 0) is center of the render camera / canvas.
+    public Vector3 GetInventoryPosition(Inventory inventory, bool pixelSnap = false)
+</code></pre>
 <h2 id="inventorymeshdata">Inventory.MeshData</h2>
 <h3 id="description_2">Description</h3>
-<h3 id="static-properties_1">Static Properties</h3>
+<p>The Inventory MeshData builds the inventory mesh to be rendered by the TextureRenderer.</p>
+<h3 id="static-properties_2">Static Properties</h3>
+<pre><code class="language-csharp">    // Is the cursor hovering over any inventory meshes rendering to the screen?
+    public static bool CursorIsOverMesh { get; }
+</code></pre>
 <h3 id="properties_2">Properties</h3>
-<h2 id="methods_2">Methods</h2>
+<pre><code class="language-csharp">    // The Inventory mesh.
+    // Shortcut for mf.sharedMesh.
+    public Mesh Mesh { get; }
+</code></pre>
+<pre><code class="language-csharp">    // The MeshRenderer of the Inventory.
+    public MeshRenderer mr { get; }
+
+    // The MeshFilter of the Inventory.
+    public MeshFilter mf { get;}
+</code></pre>
+<pre><code class="language-csharp">    // The object rendering the Inventory mesh.
+    public GameObject MeshObject { get; }
+</code></pre>
+<pre><code class="language-csharp">    // Bounds of the inventory background in world space.
+    public Bounds BackgroundBounds { get; }
+</code></pre>
+<h3 id="constructors">Constructors</h3>
+<pre><code class="language-csharp">    // Creates a new MeshData.
+    public MeshData()
+</code></pre>
+<h3 id="methods_2">Methods</h3>
+<pre><code class="language-csharp">    // Update mesh data. Is called through Inventory.Draw(InventoryImage image)
+    public void Update(Inventory inventory)
+</code></pre>
 <h2 id="inventoryslotdata">Inventory.SlotData</h2>
 <h3 id="description_3">Description</h3>
-<h3 id="static-properties_2">Static Properties</h3>
+<p>SlotData holds all the slots, and the items contained in them.</p>
+<h3 id="static-properties_3">Static Properties</h3>
+<pre><code class="language-csharp">    // The hand, containing the held item.
+    public static Slot hand { get; set; }
+</code></pre>
 <h3 id="properties_3">Properties</h3>
+<pre><code class="language-csharp">    // The size of the inventory in slots.
+    public Vector2 size { get; }
+
+    // The number of slots horizontally.
+    public int CountX
+
+    // The number of slots vertically.
+    public int CountY
+</code></pre>
+<pre><code class="language-csharp">    // The slot array of the inventory.
+    public Slot[] slots
+</code></pre>
+<h3 id="constructors_1">Constructors</h3>
+<pre><code class="language-csharp">    // Creates a new SlotData. Size is slot count on x and y of inventory.
+    public SlotData(Vector2 size)
+</code></pre>
 <h3 id="methods_3">Methods</h3>
+<pre><code class="language-csharp">    // Takes a slot (x, y) position and returns the array index.
+    public int PositionToIndex(int x, int y, InventorySkin.SlotOrder order = SlotOrder.TopToBottom)
+
+    // Takes a slot index in the array, and returns the (x ,y) position.
+    public Vector2 IndexToPosition(int i, InventorySkin.SlotOrder order = SlotOrder.TopToBottom)
+</code></pre>
+<pre><code class="language-csharp">    // Clears highlighted slot, and reset ItemPosition and Item Scale for each slot.
+    public void ResetSlotStates()
+</code></pre>
 <h2 id="slot">Slot</h2>
 <h3 id="description_4">Description</h3>
+<p>A slot containing an item and a stack count.</p>
 <h3 id="properties_4">Properties</h3>
+<pre><code class="language-csharp">    // the ID of the item held in slot.
+    public int heldItemID
+</code></pre>
+<pre><code class="language-csharp">    // Get the stack count of the item in slot.
+    public Stack { get; }
+</code></pre>
+<pre><code class="language-csharp">    // Is the slot locked?
+    public bool IsLocked { get; }
+</code></pre>
+<pre><code class="language-csharp">    // The State of the slot. Can be Open, Locked, or highlighted.
+    public UseState State { get; }
+</code></pre>
+<pre><code class="language-csharp">    // The scale of the item sprite in slot. Update this value with SetItemScale(float scale).
+    public ItemScale { get; }
+</code></pre>
+<pre><code class="language-csharp">    // Get the position of the item sprite in slot.
+    public Vector2 ItemPosition { get; }
+</code></pre>
+<h3 id="constructors_2">Constructors</h3>
+<pre><code class="language-csharp">    // Create a new Slot.
+    public Slot(int heldItem, int stack = 0, UseState state = UseState.Open)
+</code></pre>
 <h3 id="methods_4">Methods</h3>
+<pre><code class="language-csharp">    // Set the scale of the item sprite in slot.
+    public void SetItemScale(float scale)
+</code></pre>
+<pre><code class="language-csharp">    // Set the position of the item sprite in slot.
+    public void SetItemPosition(float x, float y)
+</code></pre>
+<pre><code class="language-csharp">    // Sets the item stack to value
+    public void SetStack(int value) 
+</code></pre>
+<pre><code class="language-csharp">    // Add or remove from item stack. 
+    public void AddToStack(int count) [TODO] !! maxStack stuff
+</code></pre>
+<pre><code class="language-csharp">    // Sets the UseState to Locked.
+    public void Lock()
+</code></pre>
+<pre><code class="language-csharp">    // Sets the UseState to Open.
+    public void Open()
+</code></pre>
+<pre><code class="language-csharp">    // Update slot state.
+    public void UpdateState(UseState state)
+</code></pre>
+<pre><code class="language-csharp">    // Update heldItemID and stack of slot.
+    public void Update(int heldItem, int stack)
+</code></pre>
               
             </div>
           </div>
