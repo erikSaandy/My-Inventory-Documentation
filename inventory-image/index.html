@@ -74,11 +74,15 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
     </ul>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Inventory Input</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Input Handler</a>
                     </li>
                 </ul>
                 <ul>
@@ -118,7 +122,19 @@
             <div class="section">
               
                 <h1 id="inventory-image">Inventory Image</h1>
+<pre><code>inherits from RawImage
+</code></pre>
 <h3 id="description">Description</h3>
+<p>The InventoryImage is a UI object on the Canvas, that displays the <a href="../inventory/#inventory-texture-renderer">Inventory.TextureRenderer</a> texture to the screen.  </p>
+<p>Create an InventoryImage by right-clicking in your hierarchy, UI &gt; InventoryImage.</p>
+<h3 id="properties">Properties</h3>
+<pre><code class="language-csharp">    // the editorSkin will display the inventory background accurately on the screen in the editor.
+    public InventorySkin editorSkin
+</code></pre>
+<h3 id="methods">Methods</h3>
+<pre><code class="language-csharp">    //
+    public void Draw(Inventory inventory)
+</code></pre>
               
             </div>
           </div>
@@ -126,7 +142,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../inventory-input/" class="btn btn-neutral float-right" title="Inventory Input">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../inventory-input/" class="btn btn-neutral float-right" title="Input Handler">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../inventory-skin/" class="btn btn-neutral" title="Inventory Skin"><span class="icon icon-circle-arrow-left"></span> Previous</a>

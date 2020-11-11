@@ -84,7 +84,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="inventory-input/">Inventory Input</a>
+                    <li class="toctree-l1"><a class="reference internal" href="inventory-input/">Input Handler</a>
                     </li>
                 </ul>
                 <ul>
@@ -136,7 +136,7 @@ Every look is achievable using My Inventory!</p>
 
 <h2 id="starting-guide">Starting Guide</h2>
 <p>To setup a basic inventory, you first need to configure an <a href="inventory-skin/">InventorySkin</a> scriptableObject to reference.
-You also need to create a <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html">Canvas</a> object in your scene, and add an <a href="inventory-image/">InventoryImage</a> as a child to the Canvas.<br />
+You also need to create a <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html">Canvas</a> object in your scene, and add an <a href="inventory-image/">InventoryImage</a> as a child of the Canvas.<br />
 fix canvas settings
 In a new script, add this:  </p>
 <pre><code class="language-csharp">    public Inventory inventory;
@@ -152,6 +152,7 @@ In a new script, add this:  </p>
     }
 </code></pre>
 <p>Now when you start the unity player, you should see an inventory on the screen. </p>
+<p><a name="adding-items"></a></p>
 <h3 id="adding-items">Adding items</h3>
 <p>You will realize that there are no items in your inventory. To add an item to a slot, after loading your inventory you can use </p>
 <pre><code>inventory.PlaceItem(ItemShelf.Random, 0, 0, 1);
@@ -210,5 +211,5 @@ In a new script, add this:  </p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-10-25 01:57:53.025585+00:00
+Build Date UTC : 2020-11-11 23:36:46.518173+00:00
 -->

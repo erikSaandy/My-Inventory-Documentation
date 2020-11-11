@@ -112,17 +112,17 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#methods_3">Methods</a>
     </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#slot">Slot</a>
+    <li class="toctree-l3"><a class="reference internal" href="#slot">Slot</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#description_4">Description</a>
+    <li class="toctree-l4"><a class="reference internal" href="#description_4">Description</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#properties_4">Properties</a>
+    <li class="toctree-l4"><a class="reference internal" href="#properties_4">Properties</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#constructors_2">Constructors</a>
+    <li class="toctree-l4"><a class="reference internal" href="#constructors_2">Constructors</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#methods_4">Methods</a>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_4">Methods</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -138,7 +138,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Inventory Input</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Input Handler</a>
                     </li>
                 </ul>
                 <ul>
@@ -220,8 +220,8 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
     public static void MarkForNewRenderTexture()
 </code></pre>
 <pre><code class="language-csharp">    // Set an InputObject to allow custom behavior written by the user.
-    // See InventoryInput for more information.
-    public static void SetInputObject()
+    // See InputHandler for more information.
+    public static void SetInputObject(InputHandler _object)
 </code></pre>
 <pre><code class="language-csharp">    // Get the InventoryInput object currently in use. (Null if none)
     // See InventoryInput for more information.
@@ -283,21 +283,31 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
     // Place held item in the inventory at position. 
     // Swaps items if slot already has item.
     public void PlaceHeldItem(Vector2 position)
+
+    // Place held item in the inventory slot at index. 
+    // Swaps items if slot already has item.
+    public void PlaceHeldItem(int index)
 </code></pre>
 <pre><code class="language-csharp">    // Stashes any held item in the first eligible slot.
     // Returns false if there is no place in the inventory for the Item.
     // Calls inputObject's OnTossHand(ref Slot hand) method before emptying hand if operation failed.
     public bool StashHeldItem()
-
 </code></pre>
-<pre><code class="language-csharp">    // Pick up a certain number of items from slot.
+<pre><code class="language-csharp">    // Pick up a certain number of items from slot (x, y).
     // Places/ Swaps item if hand already has item.
-    // If pickUpOneIfSame, picks up one item at (x, y) if hand item is the same as slot item.
-    public void PickUpStack(int x, int y, int count, bool pickUpOneIfSame = false)
+    public void PickUpStack(int x, int y, int count)
+
+    // Pick up a certain number of items from slot at index.
+    // Places/ Swaps item if hand already has item.
+    public void PickUpStack(int index, int count)
 </code></pre>
 <pre><code class="language-csharp">    // Places count items from hand into slot (x, y).
     // Swaps items if hand item is different from slot item.
     public void PlaceHeldStack(int x, int y, int count)
+
+    // Places count items from hand into slot at index.
+    // Swaps items if hand item is different from slot item.
+    public void PlaceHeldStack(int index, int count)
 </code></pre>
 <pre><code class="language-csharp">    // Inserts item into slot (x, y) with a stack of count.
     // Unsafe! (Overrides any item already at x, y)
@@ -312,9 +322,10 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
     // Calls inputObject's OnTossItem() method before emptying hand if operation failed.
     public bool PlaceItem(Item item, int x, int y, int count = 1)
 </code></pre>
+<p><a name="inventory-texture-renderer"></a></p>
 <h2 id="inventorytexturerenderer">Inventory.TextureRenderer</h2>
 <h3 id="description_1">Description</h3>
-<p>The TextureRenderer takes care of rendering the Inventory to the screen.</p>
+<p>The TextureRenderer takes care of rendering the <a href="./">Inventory</a> to a <a href="https://docs.unity3d.com/ScriptReference/RenderTexture.html">RenderTexture</a>.</p>
 <h3 id="static-properties_1">Static Properties</h3>
 <pre><code class="language-csharp">    // The RenderTexture with a rendering of the inventories being drawn.
     public static RenderTexture Texture { get; }
@@ -390,6 +401,7 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
 <pre><code class="language-csharp">    // Update mesh data. Is called through Inventory.Draw(InventoryImage image)
     public void Update(Inventory inventory)
 </code></pre>
+<p><a name="inventory-slot-data"></a></p>
 <h2 id="inventoryslotdata">Inventory.SlotData</h2>
 <h3 id="description_3">Description</h3>
 <p>SlotData holds all the slots, and the items contained in them.</p>
@@ -424,10 +436,11 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
 <pre><code class="language-csharp">    // Clears highlighted slot, and reset ItemPosition and Item Scale for each slot.
     public void ResetSlotStates()
 </code></pre>
-<h2 id="slot">Slot</h2>
-<h3 id="description_4">Description</h3>
+<p><a name="inventory-slot"></a></p>
+<h3 id="slot">Slot</h3>
+<h4 id="description_4">Description</h4>
 <p>A slot containing an item and a stack count.</p>
-<h3 id="properties_4">Properties</h3>
+<h4 id="properties_4">Properties</h4>
 <pre><code class="language-csharp">    // the ID of the item held in slot.
     public int heldItemID
 </code></pre>
@@ -446,11 +459,11 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
 <pre><code class="language-csharp">    // Get the position of the item sprite in slot.
     public Vector2 ItemPosition { get; }
 </code></pre>
-<h3 id="constructors_2">Constructors</h3>
+<h4 id="constructors_2">Constructors</h4>
 <pre><code class="language-csharp">    // Create a new Slot.
     public Slot(int heldItem, int stack = 0, UseState state = UseState.Open)
 </code></pre>
-<h3 id="methods_4">Methods</h3>
+<h4 id="methods_4">Methods</h4>
 <pre><code class="language-csharp">    // Set the scale of the item sprite in slot.
     public void SetItemScale(float scale)
 </code></pre>
@@ -460,8 +473,13 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
 <pre><code class="language-csharp">    // Sets the item stack to value
     public void SetStack(int value) 
 </code></pre>
-<pre><code class="language-csharp">    // Add or remove from item stack. 
-    public void AddToStack(int count) [TODO] !! maxStack stuff
+<pre><code class="language-csharp">    // Add or remove from item stack. Use AddToStackSmart to adhere to maxItemStack.
+    public void AddToStack(int count)
+
+    // Add or remove from item stack. 
+    // ref count is the amount of items to add, 
+    // and it returns the item count that potentially did not fit in slot.
+    public void AddToStackSmart(ref int count, int maxItemStack)
 </code></pre>
 <pre><code class="language-csharp">    // Sets the UseState to Locked.
     public void Lock()

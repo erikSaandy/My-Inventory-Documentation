@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Inventory Input - My Inventory Documentation</title>
+  <title>Input Handler - My Inventory Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Inventory Input";
+    var mkdocs_page_name = "Input Handler";
     var mkdocs_page_input_path = "inventory-input.md";
     var mkdocs_page_url = null;
   </script>
@@ -74,9 +74,11 @@
                     </li>
                 </ul>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Inventory Input</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Input Handler</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#virtual-methods">Virtual Methods</a>
     </li>
     </ul>
                     </li>
@@ -106,7 +108,7 @@
     
       
     
-    <li>Inventory Input</li>
+    <li>Input Handler</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,8 +119,41 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="inventory-input">Inventory Input</h1>
+                <h1 id="input-handler">Input Handler</h1>
 <h3 id="description">Description</h3>
+<p>The InputHandler is a base class holding virtual methods called at certain points when an inventory is rendering.<br />
+It is possible to create custom functionality for your Inventory by overriding these methods in a custom class, and using <a href="../inventory/">Inventory</a>.SetInputObject(), passing in your InventoryHandler object.</p>
+<h3 id="virtual-methods">Virtual Methods</h3>
+<pre><code class="language-csharp">    // Called when any slot of inventory is hovered over.
+    // index is the position of the slot in the [Inventory.Slots](inventory.md#) array
+    public virtual void OnHoverSlot(Inventory inventory, int index)
+</code></pre>
+<pre><code class="language-csharp">    // Called whenever the cursor isn't hovering over any inventory on the screen.
+    // Only called whenever at least one inventory is being rendered.
+    public virtual void OnHoverOverVoid()
+</code></pre>
+<pre><code class="language-csharp">    // Called once for every slot, every frame.
+    // Useful for using slot.SetItemScale and slot.SetItemPosition depending on slot.State.
+    public virtual void OnSlot(Inventory inventory, ref Slot slot, Vector2 pos)
+</code></pre>
+<pre><code class="language-csharp">    // Called whenever inventory starts being drawn using the inventory.Draw() method.
+    public virtual void OnStartDraw(Inventory inventory)
+</code></pre>
+<pre><code class="language-csharp">    // Called whenever inventory stops being drawn using the inventory.Draw() method.
+    public virtual void OnStopDraw(Inventory inventory)
+</code></pre>
+<pre><code class="language-csharp">    // Called when hand item fails to fit anywhere in inventory using StashHeldItem().
+    // count is the amount of items to toss from hand.
+    public virtual void OnTossHand(int count)
+</code></pre>
+<pre><code class="language-csharp">    // Called whenever items tries to enter the inventory but fails.
+    // If items are not taken care of in this method, they will be lost.
+    public virtual void OnTossItem(ref Item item, int count)
+</code></pre>
+<pre><code class="language-csharp">    // Called by the inventory to find out where the cursor is.
+    // Don't override this method, and it will return Input.mousePosition.
+    public virtual Vector2 GetCursorPosition()
+</code></pre>
               
             </div>
           </div>

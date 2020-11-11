@@ -94,7 +94,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Inventory Input</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../inventory-input/">Input Handler</a>
                     </li>
                 </ul>
                 <ul>
@@ -143,32 +143,42 @@ All properties on an InventorySkin is local to a certain Inventory, and you can 
 <pre><code class="language-csharp">        //The size of your inventory determines the amount of slots it has on the x and y axis. 
         public Vector2 size
 </code></pre>
-<pre><code class="language-csharp">        // Item stacks in a slot can not exceed this value.
-        public int maxItemStack [TODO]
-</code></pre>
 <pre><code class="language-csharp">        // The base material used by the inventory. 
         // Use a Sprites/Default material if you're not sure. 
         public Material material
 </code></pre>
-<pre><code class="language-csharp">        // The method used to render item stack numbers.
-        // Can be Font or Sprite.
-        public InventorySkin.TextType textType [TODO]
+<pre><code class="language-csharp">        // The type of text to use for item stack count.
+        // Can be Font, Sprite or None.
+        public InventorySkin.TextType textType
 </code></pre>
 <pre><code class="language-csharp">        // The font to use if textType is font.
         public Font font
+
+        // The size of the font.
+        public float fontSize;
+
+        // The style of the font. 
+        public FontStyle fontStyle
+
+        // The color of the font.
+        public Color fontColor;
+
 </code></pre>
 <pre><code class="language-csharp">        // Populate this array with number 0-9 if textType is Sprite.
         public Sprite[] numberSprites
 </code></pre>
-<pre><code class="language-csharp">        // The order of the slots. Can be TopToBottom or BottomToTop.
-        public SlotOrder slotOrder [TODO]
-</code></pre>
 <pre><code class="language-csharp">        // The offset for all of the text instances in pixels.
         // Default is center of each slot.
         public Vector2 textPixelOffset
-</code></pre>
-<pre><code class="language-csharp">        // The spacing between numbers, in pixels.
+
+        // The spacing between numbers, in pixels.
         public float textSpacing
+</code></pre>
+<pre><code class="language-csharp">        // The order of the slots. Can be TopToBottom or BottomToTop.
+        public SlotOrder slotOrder
+</code></pre>
+<pre><code class="language-csharp">        // Item stacks in a slot can not exceed this value.
+        public int maxItemStack
 </code></pre>
 <pre><code class="language-csharp">        // The number of frames rendered per second.
         // Keep this number relatively low to improve performance (60 is good).
@@ -223,6 +233,7 @@ All properties on an InventorySkin is local to a certain Inventory, and you can 
 <pre><code class="language-csharp">        // Holds all the information about individual slot offsets. 
         public InventoryOffsetData offsetData
 </code></pre>
+<p><a name="inventory-offset-data"></a></p>
 <h2 id="inventoryoffsetdata">InventoryOffsetData</h2>
 <p>InventoryOffsetData holds all the information about individual slot offsets in an InventorySkin.<br />
 InventoryOffsetData makes it possible to select several slots, and move them a few pixels in any direction as you see fit.</p>
@@ -240,6 +251,7 @@ InventoryOffsetData makes it possible to select several slots, and move them a f
 <pre><code class="language-csharp">    // Get offset of slot at position, in pixels
     public Vector2 GetOffset(Vector2 position)
 </code></pre>
+<p><a name="inventory-offset"></a></p>
 <h2 id="inventoryoffsetdataoffset">InventoryOffsetData.Offset</h2>
 <h3 id="properties_2">Properties</h3>
 <pre><code class="language-csharp">    // Positions of Inventory slots affected by this offset.
