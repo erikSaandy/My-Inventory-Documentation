@@ -87,6 +87,14 @@
                     <li class="toctree-l1"><a class="reference internal" href="../item-shelf/">Item Shelf</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://myinventory.userecho.com/">Support</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://assetstore.unity.com/">Get My Inventory &#x1F496;</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -122,10 +130,10 @@
                 <h1 id="input-handler">Input Handler</h1>
 <h3 id="description">Description</h3>
 <p>The InputHandler is a base class holding virtual methods called at certain points when an inventory is rendering.<br />
-It is possible to create custom functionality for your Inventory by overriding these methods in a custom class, and using <a href="../inventory/">Inventory</a>.SetInputObject(), passing in your InventoryHandler object.</p>
+It is possible to create custom functionality for your Inventory by overriding these methods in a custom class, and using <a href="../inventory/#set-input-object">Inventory.SetInputObject()</a>, passing in your InventoryHandler object.</p>
 <h3 id="virtual-methods">Virtual Methods</h3>
 <pre><code class="language-csharp">    // Called when any slot of inventory is hovered over.
-    // index is the position of the slot in the [Inventory.Slots](inventory.md#) array
+    // index is the position of the slot in the Inventory.Slots array
     public virtual void OnHoverSlot(Inventory inventory, int index)
 </code></pre>
 <pre><code class="language-csharp">    // Called whenever the cursor isn't hovering over any inventory on the screen.

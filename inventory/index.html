@@ -145,6 +145,14 @@
                     <li class="toctree-l1"><a class="reference internal" href="../item-shelf/">Item Shelf</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://myinventory.userecho.com/">Support</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://assetstore.unity.com/">Get My Inventory &#x1F496;</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -181,7 +189,7 @@
 <h3 id="description">Description</h3>
 <p>An Inventory is an object that takes care of drawing an inventory on the screen
 with help from an <a href="../inventory-skin/">InventorySkin</a> and an <a href="../inventory-image/">InventoryImage</a>.
-The behaviour of an Inventory can be altered using an <a href="../inventory-input/">InventoryInput</a> object.</p>
+The behaviour of an Inventory can be altered using an <a href="../inventory-input/">InputHandler</a> object.</p>
 <h3 id="static-properties">Static Properties</h3>
 <pre><code class="language-csharp">    // the ID of the inventory the cursor is hovering over.
     // -1 if no inventory is hovered over.
@@ -219,13 +227,14 @@ The behaviour of an Inventory can be altered using an <a href="../inventory-inpu
     // Usefull after changing aspect ratio.
     public static void MarkForNewRenderTexture()
 </code></pre>
+<p><a name="set-input-object"></a></p>
 <pre><code class="language-csharp">    // Set an InputObject to allow custom behavior written by the user.
     // See InputHandler for more information.
     public static void SetInputObject(InputHandler _object)
 </code></pre>
-<pre><code class="language-csharp">    // Get the InventoryInput object currently in use. (Null if none)
-    // See InventoryInput for more information.
-    public static InventoryInput GetInputObject()
+<pre><code class="language-csharp">    // Get the InputHandler currently in use. (Null if none)
+    // See InputHandler for more information.
+    public static InputHandler GetInputObject()
 </code></pre>
 <h3 id="methods">Methods</h3>
 <pre><code class="language-csharp">    // Reload slotData.slots[] array from last save as FileName.
