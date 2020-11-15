@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -64,7 +65,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#creating-an-inventoryimage">Creating an InventoryImage</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#adding-items">Adding items</a>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-an-itemshelf">Creating an ItemShelf</a>
     </li>
     </ul>
                     </li>
@@ -90,11 +91,11 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="" href="https://myinventory.userecho.com/">• Support</a>
+                    <li class="toctree-l1"><a class="" href="https://myinventory.userecho.com/">• Give Feedback</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="" href="https://assetstore.unity.com/">• Get My Inventory &#x1F496;</a>
+                    <li class="toctree-l1"><a class="" href="https://assetstore.unity.com/">• Unity Asset Store</a>
                     </li>
                 </ul>
       </div>
@@ -133,19 +134,26 @@
 <p align="center"style="color:#303030; line-height:1 "><em>A simple inventory system for Unity3d</em></p>
 
 <video width="700" height="394" autoplay="" muted="" playsinline="" loop="" style="border-bottom: 2px solid rgb(255, 94, 94);"> <source src="images/inventory use demo.mp4" type="video/mp4"> </video>
-<p align="center" style="line-height:1.5; font-size:25px; font-family:arial">
-    <a style="color:rgb(255, 94, 94); display:table-cell; padding-right:20px;" href="https://assetstore.unity.com/"><b>Asset Store</b></a>
-    <a style="color:rgb(255, 94, 94); display:table-cell; padding-left:20px; padding-right:20px;"><b>•</b></a>
-    <a style="color:rgb(255, 94, 94); display:table-cell; padding-left:20px;" href="https://myinventory.userecho.com/"><b>Feedback</b></a>
+
+<p align="center" style="line-height:1.5; font-size:25px; font-family:arial;">
+    <a target="_blank" style="color:rgb(255, 94, 94); display:table-cell; padding-right:20px;" href="https://assetstore.unity.com/"><b>Asset Store</b></a>
+    <a2 style="color:rgb(255, 94, 94); display:table-cell; padding-left:20px; padding-right:20px;"><b>•</b></a2>
+    <a target="_blank" style="color:rgb(255, 94, 94); display:table-cell; padding-left:20px;" href="https://myinventory.userecho.com/"><b>Feedback</b></a>
 </p>
 
-<p><strong>My inventory</strong> is an Inventory system designed to be easy to use, yet flexible and customizable enough for you to be able to achieve
-<em>Any</em> inventory look you want ranging from Animal Crossing, to Stardew Valley and Minecraft, all inside the Unity game engine.<br />
-Every look is achievable using My Inventory!</p>
+<p align="center" style="font-size:15px;">
+Creating an inventory system that works for your project can be time-consuming for new or even experienced game developers.  
+My Inventory aims to be easy to implement, and to seamlessly complement your Unity game no matter what it is.  
+
+</p>
+
+<p><br><br/>
+<img alt="scroll-down" width="200" src="images/scroll-down.png" class="center">
+<br><br/></p>
 <h2 id="getting-started">Getting Started</h2>
-<p>Purchasing My Inventory from the Unity Asset Store gives you access to all the source files and code that builds My Inventory.
-You can then edit or add new fundamental features directly to the source code if you wish.  </p>
-<p>If you find a bug or want to request a feature, you can submit a support ticket <a href="https://myinventory.userecho.com/">here</a></p>
+<p>Purchasing My Inventory from the Unity Asset Store gives you access to all the source files and code that builds the My Inventory system.
+You can edit or add new features to the source code to fit your project, but My Inventory is NOT open source. <p>You can read the entire software license by <a href="/files/LICENSE"> downloading the LICENSE file</a>. </p></p>
+<p>The My Inventory Unity asset comes with demo files and scenes displaying a complete inventory setup to make it easy for you to get started right ahead, but for a complete set-up guide you can continue reading!</p>
 <h3 id="creating-an-inventoryskin">Creating an <a href="inventory-skin/">InventorySkin</a></h3>
 <p>Before anything, you need to decide how your inventory should look, and to do that you need to create and configure an <a href="inventory-skin/">InventorySkin</a>.  </p>
 <p>To create an <a href="inventory-skin/">InventorySkin</a>, right-click in your asset browser,<br />
@@ -153,33 +161,51 @@ You can then edit or add new fundamental features directly to the source code if
 <p><img align="right" alt="ppu" width="250" src="images/pixels-per-unit.png" style="float:left; padding-right:10px"> <img align="right" height="500" alt="skin" width="250" height="100" src="images/inventory-skin.png" style="float:right; padding-left:10px">
 In your <a href="inventory-skin/">InventorySkin</a> you can add sprites for the different elements of your inventory. 
 If you want all the different sprites of your inventory to have the same pixel size, all of your sprite assets should have the same 'Pixels Per Unit' value.</p>
-<p>When you have added your sprites and optionally a font to your <a href="inventory-skin/">InventorySkin</a>, it helps to have your inventory display on the screen before tweaking the other settings.
-An <a href="inventory-skin/">InventorySkin</a> can be modified at runtime through the inspector, and we will take advantage of this to easily see our inventory get updated as we modify our <a href="inventory-skin/">InventorySkin</a>.  </p>
-<p>Keep in mind that not all of the <a href="inventory-skin/">InventorySkin</a> variables support runtime editing, and you might occasionally need to restart your game to see changes.  </p>
+<p>When you have added your sprites and optionally a font to your <a href="inventory-skin/">InventorySkin</a> through the inspector, it helps to have your inventory display on the screen before tweaking the other skin settings.
+An <a href="inventory-skin/">InventorySkin</a> can be modified at runtime, and we will take advantage of this to easily see our inventory get updated as we tweak the <a href="inventory-skin/">InventorySkin</a> values.  </p>
+<p>Please note that not all of the <a href="inventory-skin/">InventorySkin</a> variables support runtime editing. You might occasionally need to restart your player to see changes, but to see changes in the first place you will need
+to render your inventory to the canvas using an <a href="inventory-image/">InventoryImage</a>.</p>
 <h3 id="creating-an-inventoryimage">Creating an <a href="inventory-image/">InventoryImage</a></h3>
-<p>To display your inventory to the screen, you need to create an <a href="inventory-image/">InventoryImage</a> object and place it on a canvas.
-To create an <a href="inventory-image/">InventoryImage</a>, right-click in the scene hierarchy,<br />
-<strong>UI &gt; Inventory Image</strong></p>
-<p>///</p>
-<pre><code class="language-csharp">    public Inventory inventory;
+<p>To display your inventory to the screen, you need to create an <a href="inventory-image/">InventoryImage</a> object by right-clicking in the scene hirearchy,<br />
+<strong>UI &gt; Inventory Image</strong><br />
+and place it on a Canvas.</p>
+<p>You can add your <a href="inventory-skin/">InventorySkin</a> to the editorSkin property of your <a href="inventory-image/">InventoryImage</a> in the inspector to see an approximation of your inventory on the camera in edit mode.<br />
+It is possible to scale the <a href="inventory-image/">InventoryImage</a> on the x and y axis and move it around the screen to position it. </p>
+<div class="img-with-text" width:300 style="float:right; padding-left:10px;">
+    <img alt="inventory-image" width="300" src="images/inventory-image.png" style="padding-bottom:0px;" />
+    <p align="center" style="color:rgb(100, 100, 100); font-size:14px; font-family:Arial; line-height:5px; padding-top:0px;" ><em>InventoryImage in edit mode</em></p>
+</div>
+
+<p>Now it's time to write some code to load and draw your inventory.<br />
+In a new script, add the following code:</p>
+<pre><code class="language-csharp">public class MyScript : InputHandler {
+
+    Inventory inventory;
+
     public InventorySkin skin;
     public InventoryImage image;
 
-    void Awake() {
-        inventory = Inventory.Load(&quot;player_inventory&quot;, skin);
-    }   
+    private void Awake() {
+        inventory = Inventory.Load(&quot;inventory&quot;, skin);
+    }
 
     void Update() {
-        inventory.Draw(image);      
+        inventory.Draw(image);
     }
+
+}
 </code></pre>
-<p>Now when you start the unity player, you should see an inventory on the screen. </p>
-<p><a name="adding-items"></a></p>
-<h3 id="adding-items">Adding items</h3>
-<p>You will realize that there are no items in your inventory. To add an item to a slot, after loading your inventory you can use </p>
-<pre><code>inventory.PlaceItem(ItemShelf.Random, 0, 0, 1);
-</code></pre>
-<p>This will take a random item from the ItemShelf, and place it in slot(0, 0) with a count of 1.</p>
+<p>Add the script to an object and then add your <a href="inventory-skin/">InventorySkin</a> and your newly created <a href="inventory-image/">InventoryImage</a> to the skin/ image properties respectively.<br />
+When you start the player, you should now see your inventory rendered to the screen. This is the perfect time to tweak your <a href="inventory-skin/">InventorySkin</a> properties to perfection!</p>
+<h3 id="creating-an-itemshelf">Creating an <a href="item-shelf/">ItemShelf</a></h3>
+<p>To add items to your inventory, you need an <a href="item-shelf/">ItemShelf</a> present in a /Resources/ folder somewhere in your project.
+When you first import the My Inventory package to your project, there is a pre-configured ItemShelf in the <strong>/My Inventory/Demo/Resources/</strong> folder. You will need to delete the pre-existing one
+if you want to create your own, as there can only be one <a href="item-shelf/">ItemShelf</a> in the project at once.
+<br><br/>
+You can edit the Item.cs script to add custom variables to your items to organize and distinguish them further, as the Item.cs class initially only holds a sprite and a name variable.<br />
+The Item.cs variables does not need to be serializable, as the <a href="inventory/#inventory-slot">Inventory Slots</a> holds the item only as an id.</p>
+<p>inventory.PlaceItem(ItemShelf.Random, 0, 0, 1);
+This will take a random item from the ItemShelf, and place it in slot(0, 0) with a count of 1.</p>
               
             </div>
           </div>
@@ -233,5 +259,5 @@ To create an <a href="inventory-image/">InventoryImage</a>, right-click in the s
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-11-14 04:46:11.191623+00:00
+Build Date UTC : 2020-11-15 02:30:51.809894+00:00
 -->
